@@ -1,0 +1,21 @@
+{
+  "name": "bettercompanyproj",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "Vaishnavi Reddy <vaireddy11@gmail.com>"
+  ],
+  "license": "ISC",
+  "moduleType": [],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^2.2.4"
+  }
+}

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<head>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-rc1/core.js"></script>
+</head>
+<body>
+feed
+<ul class="feed">
+  {{#each feed}}
+    <li>{{this}}</li>
+  {{/each}}
+</ul>
+<form action="/feed" method="POST">
+  <input type="text" id="newFeedPost" placeholder="feedItem" name="feed_message">
+  <button type="submit" onclick="addPost()">Submit</button>
+</form>
+</body>
+<script type="text/javascript">
+  function addPost() {
+    var newPost = $('#newFeedPost').val();
+    $.ajax('/feed', {
+      method:'POST',
+      data: {
+        feed_message: newPost
+      },
+      complete: function() {
+        location.reload();
+        $('.feed').append(newPost);
+      }
+    })
+  }
+  window.onload = addPost;
+</script>
