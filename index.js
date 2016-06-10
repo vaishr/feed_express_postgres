@@ -25,8 +25,6 @@ app.get('/', function (req, res) {
 function verifyUser(email, password) {
   return client.query("SELECT * FROM users WHERE email='"+ email +"';", function(err, results) {
     if (results.rows.length) {
-      console.log('results users query', results);
-      console.log('typeof results users query', typeof results);
       if (results.rows[0].password === password) {
         return true;
       }
@@ -35,26 +33,32 @@ function verifyUser(email, password) {
   });
 }
 
-function addFeedItem(user, message) {
-  return client.query("INSERT INTO posts (id, feed_message, email) VALUES (DEFAULT, '" + message + "','" + user + "')", function(err, results) {
-    console.log("addFeedItem results", results);
-    return results;
-  });
+function addFeedItem(user, message, next) {
+  var queryString = "INSERT INTO posts (id, feed_message, email) VALUES (DEFAULT, '" + message + "','" + user + "') RETURNING *";
+  var query = client.query(queryString, function(err, results){
+    query.on("row", function(row, result) {
+      // console.log("inside row event handler");
+      // console.log("query", query)
+      next();
+    })
+  })
 }
 
 function getFeed() {
-  var query = client.query("SELECT * FROM posts;", function(err, results) {
+  return client.query("SELECT * FROM posts;", function(err, results) {
     console.log('results getFeed()', results);
-    console.log('ytpe of results getFeed()', typeof results);
-
+    console.log('type of results getFeed()', typeof results);
+ 
   //  console.log('getFeed()results.rows', results.rows);
     return results;
   });
-  console.log('query', query)
 }
 
-function getUser(email) {
-
+function getUser(user_id) {
+  return client.query("SELECT * from users WHERE id='" + user_id + "';", function(err, results) {
+    console.log('results getuser', results);
+    return results;
+  });
 }
 
 app.post('/authenticate', function(req, res) {
@@ -65,8 +69,9 @@ app.post('/authenticate', function(req, res) {
 });
 
 app.get('/feed', function(req, res) {
-
+  getUser('1');
   res.render('feed', {feed: getFeed()});
+
 })
 
 app.post('/feed', function(req, res) {
