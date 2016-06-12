@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <head>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-rc1/core.js"></script>
 </head>
 <body>
-feed
+<!-- <div> Welcome {{username}} !!!</div>-->
+<div id="result"></div>
+<h3> Feed </h3>
 <ul class="feed">
   {{#each feed}}
-    <li>{{this}}</li>
+    <li>{{feed_message}}</li>
   {{/each}}
 </ul>
+
+<h3> New Feed </h3>
 <form action="/feed" method="POST">
   <input type="text" id="newFeedPost" placeholder="feedItem" name="feed_message">
   <button type="submit" onclick="addPost()">Submit</button>
@@ -16,17 +19,21 @@ feed
 </body>
 <script type="text/javascript">
   function addPost() {
-    var newPost = $('#newFeedPost').val();
-    $.ajax('/feed', {
-      method:'POST',
-      data: {
+    var newPost = $('#newFeedPost').value;
+    request = $.ajax({
+        url: "/feed",
+        type: "post",
+       data: {
         feed_message: newPost
-      },
-      complete: function() {
-        location.reload();
-        $('.feed').append(newPost.row[0]);
       }
-    })
-  }
-  window.onload = addPost;
+    });
+    request.done(function (response, textStatus, jqXHR){
+        console.log("completed "+response);
+    });
+
+    request.fail(function (){
+       $("#result").html('There is error while submit');
+     });
+
+}
 </script>

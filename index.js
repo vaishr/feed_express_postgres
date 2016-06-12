@@ -2,6 +2,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var path = require('path');
 var engines = require('consolidate');
+var Q = require('q');
 
 var app = express();
 
@@ -22,60 +23,103 @@ app.get('/', function (req, res) {
   res.render('login', {});
 });
 
+var currentUser;
+
 function verifyUser(email, password) {
-  return client.query("SELECT * FROM users WHERE email='"+ email +"';", function(err, results) {
-    if (results.rows.length) {
-      if (results.rows[0].password === password) {
-        return true;
-      }
-    }
-    return false;
+  return Q.promise(function(resolve, reject) {
+    console.log("query starting");
+    var query = client.query("select * from users where email=$1", [email]);
+    query.on("row", function(row, result) {
+      resolve(row);
+    });
+    query.on("end", function(result) {
+      reject();
+    });
+    query.on("error", function(error) {
+      console.log("query error: ", error);
+      reject(error);
+    });
   });
 }
 
-function addFeedItem(user, message, next) {
-  var queryString = "INSERT INTO posts (id, feed_message, email) VALUES (DEFAULT, '" + message + "','" + user + "') RETURNING *";
-  var query = client.query(queryString, function(err, results){
+
+function addFeedItem(message, user_id) {
+  return Q.promise(function(resolve, reject) {
+    var query = client.query("INSERT INTO posts (feed_message, user_id) VALUES ('" + message + "','" + user_id + "') RETURNING *;");
     query.on("row", function(row, result) {
-      // console.log("inside row event handler");
-      // console.log("query", query)
-      next();
+      console.log("inside row result", result);
+      console.log("query", query)
+      resolve(row);
     })
+     query.on("end", function(result) {
+      reject();
+    });
+    query.on("error", function(error) {
+      console.log("query error: ", error);
+      reject(error);
+    });
   })
 }
 
 function getFeed() {
-  return client.query("SELECT * FROM posts;", function(err, results) {
-    console.log('results getFeed()', results);
-    console.log('type of results getFeed()', typeof results);
- 
-  //  console.log('getFeed()results.rows', results.rows);
-    return results;
-  });
+  return Q.promise(function(resolve, reject) {
+    var feedPosts = [];
+    var query = client.query("SELECT * FROM posts;");
+    query.on("row", function(row, result) {
+      feedPosts.push(row);
+      resolve(feedPosts);
+    });
+     query.on("end", function(result) {
+      console.log("on query end");
+      reject();
+    });
+    query.on("error", function(error) {
+      console.log("query error: ", error);
+      reject(error);
+    });
+  })
 }
 
-function getUser(user_id) {
-  return client.query("SELECT * from users WHERE id='" + user_id + "';", function(err, results) {
-    console.log('results getuser', results);
-    return results;
-  });
+function getUser(email) {
+  return Q.promise(function(resolve, reject) {
+    var query = client.query("SELECT * from users WHERE email='" + email + "';");
+    query.on("row", function(row, result) {
+      resolve(row);
+    })
+    query.on("end", function(result) {
+      reject();
+    });
+    query.on("error", function(error) {
+      console.log("query error: ", error);
+      reject(error);
+    });
+  })
 }
 
 app.post('/authenticate', function(req, res) {
-  if (verifyUser(req.body.email, req.body.password)) {
+  console.log("/auth", req.body);
+  var email = req.body.email;
+  var userPromise = verifyUser(email, req.body.password);
+  userPromise.then(function(row) {
+    getUser(email).then(function(row) {
+      currentUser = row.id;
+    })
     res.redirect('/feed');
-  }
-  else res.redirect('/');
+  }).catch(function(error) {
+    res.redirect('/');
+  });
 });
 
-app.get('/feed', function(req, res) {
-  getUser('1');
-  res.render('feed', {feed: getFeed()});
-
+app.get('/feed', function(req, res) { 
+  var feedPromise = getFeed();
+  feedPromise.then(function(result) {
+    res.render('feed', {feed: result});
+  })
 })
 
 app.post('/feed', function(req, res) {
-  addFeedItem(null, req.body.feed_message);
+  console.log('req.body.feed_message', req.body.feed_message)
+  addFeedItem(req.body.feed_message, currentUser);
   res.redirect('/feed');
 });
 
@@ -93,3 +137,6 @@ app.listen(3000, function() {
  });
 
 module.exports = app;
+
+
+

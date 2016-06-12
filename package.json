@@ -17,5 +17,10 @@
     "nodemon": "^1.9.2",
     "path": "^0.12.7",
     "pg": "^5.0.0"
+  },
+  "devDependencies": {
+    "bluebird": "^3.4.0",
+    "npm-check-updates": "^2.6.7",
+    "q": "^1.4.1"
   }
 }
