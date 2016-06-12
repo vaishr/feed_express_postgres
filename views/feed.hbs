@@ -2,12 +2,15 @@
 <head>
 </head>
 <body>
-<!-- <div> Welcome {{username}} !!!</div>-->
+<div> Welcome {{user}} !!!</div>
 <div id="result"></div>
 <h3> Feed </h3>
 <ul class="feed">
   {{#each feed}}
-    <li>{{feed_message}}</li>
+    <li>
+    user : {{user_id}} <br>
+    message: {{feed_message}}
+    </li>
   {{/each}}
 </ul>
 
@@ -24,7 +27,8 @@
         url: "/feed",
         type: "post",
        data: {
-        feed_message: newPost
+        feed_message: newPost,
+        user: currentUser
       }
     });
     request.done(function (response, textStatus, jqXHR){
@@ -34,6 +38,5 @@
     request.fail(function (){
        $("#result").html('There is error while submit');
      });
-
 }
 </script>

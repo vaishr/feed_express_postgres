@@ -20,6 +20,7 @@
   },
   "devDependencies": {
     "bluebird": "^3.4.0",
+    "nodemon": "^1.9.2",
     "npm-check-updates": "^2.6.7",
     "q": "^1.4.1"
   }
