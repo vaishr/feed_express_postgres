@@ -45,14 +45,22 @@ app.post('/authenticate', function(req, res) {
 app.get('/feed', function(req, res) { 
   var feedPromise = getFeed();
   feedPromise.then(function(result) {
-    console.log(result);
+    var emails = {};
+    for (var i = 0; i < result.length; i++) {
+      emails.id = result[i].id;
+      // emails.email = result[i].email;
+    }
     res.render('feed', {feed: result.reverse(), user: currentUser});
   })
 })
 
 app.post('/feed', function(req, res) {
-  console.log('req.body.feed_message', req.body.feed_message)
-  addFeedItem(req.body.feed_message, currentUser);
+  console.log('req.body.feed_message', req.body.feed_message);
+  addFeedItem(req.body.feed_message, currentUser).then(function(result) {
+    console.log("data", result);
+  }).catch(function(err) {
+    console.log("err", err);
+  });
   res.redirect('/feed');
 });
 
@@ -67,7 +75,7 @@ app.post('/logout', function(req, res) {
 
 app.listen(3000, function() {
    console.log("listening on 3000");
- });
+});
 
 module.exports = app;
 

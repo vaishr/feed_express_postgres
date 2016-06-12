@@ -4,7 +4,7 @@ var client = require('./db').client;
 function verifyUser(email, password) {
   return Q.promise(function(resolve, reject) {
     console.log("query starting");
-    var query = client.query("select * from users where email=$1", [email]);
+    var query = client.query("SELECT * FROM users where email=$1", [email]);
     query.on("row", function(row, result) {
       resolve(row);
     });
@@ -21,14 +21,16 @@ function verifyUser(email, password) {
 
 function addFeedItem(message, user_id) {
   return Q.promise(function(resolve, reject) {
-    var query = client.query("INSERT INTO posts (feed_message, user_id) VALUES ('" + message + "','" + user_id + "') RETURNING *;");
+    var ts = new Date().getTime();
+    var query = client.query("INSERT INTO posts (feed_message, user_id, created_at) VALUES ($1, $2, $3);", [message, user_id, ts]);
     query.on("row", function(row, result) {
       console.log("inside row result", result);
       console.log("query", query)
       resolve(row);
     })
-     query.on("end", function(result) {
-      reject();
+    query.on("end", function(result) {
+      console.log("ended");
+      resolve();
     });
     query.on("error", function(error) {
       console.log("query error: ", error);
@@ -58,7 +60,7 @@ function getFeed() {
 
 function getUserfromEmail(email) {
   return Q.promise(function(resolve, reject) {
-    var query = client.query("SELECT * from users WHERE email='" + email + "';");
+    var query = client.query("SELECT * FROM users WHERE email=$1", [email]);
     query.on("row", function(row, result) {
       resolve(row);
     })
@@ -74,7 +76,7 @@ function getUserfromEmail(email) {
 
 function getUserfromID(id) {
   return Q.promise(function(resolve, reject) {
-    var query = client.query("SELECT * from users WHERE id='" + id + "';");
+    var query = client.query("SELECT * from users WHERE id=$1", [id]);
     query.on("row", function(row, result) {
       resolve(row);
     })
