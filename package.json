@@ -13,6 +13,7 @@
     "bower": "^1.7.9",
     "consolidate": "^0.14.1",
     "express": "^4.13.4",
+    "express-router": "0.0.1",
     "handlebars": "^4.0.5",
     "nodemon": "^1.9.2",
     "path": "^0.12.7",

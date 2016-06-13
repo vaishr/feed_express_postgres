@@ -1,6 +1,7 @@
 @font-face {
   font-family: 'quicksand';
   src: url("assets/quicksand/QuickSand-Regular.otf");
+  font-weight: normal;
 }
 
 @font-face{
@@ -38,20 +39,15 @@ h1, h2 {
   letter-spacing: 1px;
 }
 
-/*Styles for Login Page */
-
-hr {
-  top: 14px;
-  position: relative;
-  margin: 4px -4px;
-  display: block;
-  height: 1px;
-  border: 0;
-  border-color: gray;
-  border-top: 1px solid #ccc;
-  padding: 0; 
-
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    transition: background-color 5000s ease-in-out 0s;
 }
+
+
+/*Styles for Login Page */
 
 textarea:focus, input:focus{
   outline: none;
@@ -121,3 +117,38 @@ input {
   position: relative;
   right: 9px;
  }
+
+ #loginErr {
+  color: red;
+  font-weight: normal;
+  display: none;
+ }
+
+ hr {
+  top: 14px;
+  position: relative;
+  margin: 4px -4px;
+  display: block;
+  height: 1px;
+  border: 0;
+  border-color: gray;
+  border-top: 1px solid #ccc;
+  padding: 0; 
+}
+
+ /*Styles for Feed*/ 
+
+ #logoutBtn {
+ 
+ }
+
+ .feedItem {
+  background-image: url("assets/img_cardBackground@2x.png");
+  background-repeat:  no-repeat;
+  background-position: center center;
+  background-size: 100%;
+  height: auto;
+ }
+
+
+ 
