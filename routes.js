@@ -1,4 +1,4 @@
-var express = require("express");
+var express = require('express');
 var router = express.Router();
 
 var verifyUser = require('./helpers').verifyUser;
@@ -44,14 +44,14 @@ router.post('/feed', function(req, res) {
   res.redirect('/feed');
 });
 
+router.post('/logout', function(req, res) {
+  currentUser = null;
+  res.redirect('/');
+})
+
 router.get('/:user', function(req, res) {
   var user = req.params.user;
   res.render('profile', {user: user});
 });
-
-router.post('/logout', function(req, res) {
-  currentUser = null;
-  res.redirect('/login');
-})
 
 module.exports = router;

@@ -2,35 +2,51 @@
 <head>
 <link href="style.css" rel="stylesheet">
 <meta charset ="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
+<script type="text/javascript" src="jquery/dist/jquery.js"></script>
 </head>
 <body>
 <div class = "container">
   <form action="/logout" method="POST">
-    <img src = "/assets/btn_logout.svg" id="logoutBtn" style="z-index:100">
+    <input type="image" src = "assets/btn_logout.svg" id="logoutBtn">
   </form>
   <div id="result"></div>
-  <h3> Feed </h3>
   <div class="feed">
     {{#each feed}}
       <div class = "feedItem">
-      user : {{user_id}} <br>
-      message: {{feed_message}}
-      time: {{created_at}}
-      email: {{email}}
+        <div class="userEmail">
+          {{email}}
+        </div>
+        <div class="feedMessage">
+           {{feed_message}}
+        </div>
       </div>
     {{/each}}
-  </div >
-  <h3> New Feed </h3>
-  <form action="/feed" method="POST">
-    <input type="text" id="newFeedPost" placeholder="feedItem" name="feed_message">
-    <button type="submit" onclick="addPost()">Submit</button>
-  </form>
+  </div > 
+  <button class="btnCompose" onclick="openModal()"> </button>
+  <div class="modalBackground">
+    <form action="/feed" method="POST">
+      <textarea class="modalTextArea" type="text" id="newFeedPost" placeholder="What would you like to say?" name="feed_message"></textarea>
+      <button id="newPostSubmit" type="submit" onclick="addPost()">Submit</button>
+    </form>
+  </div>
 </div>
 </body>
 <script type="text/javascript">
+var modalBackground = $('.modalBackground');
+  function openModal() {
+    modalBackground.addClass('show');
+  }
+  function closeModal(e) {
+    if(e.target === modalBackground[0]) {
+      modalBackground.removeClass('show');
+    }
+  }
+
+  modalBackground.on('click',closeModal)
+
   function addPost() {
-    var newPost = $('#newFeedPost').value;
-    request = $.ajax({
+    var newPost = $('#newFeedPost').val();
+    var request = $.ajax({
         url: "/feed",
         type: "post",
        data: {
@@ -42,7 +58,7 @@
         console.log("completed "+ response);
     });
     request.fail(function (){
-       $("#result").html('There is error while submit');
+       $('#result').html('error');
      });
 }
 </script>

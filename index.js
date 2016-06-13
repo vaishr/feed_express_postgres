@@ -4,8 +4,6 @@ var path = require('path');
 var engines = require('consolidate');
 var routes = require('./routes');
 
-var currentUser;
-
 var app = express();
 
 app.engine('hbs', engines.handlebars);
