@@ -6,7 +6,9 @@ function verifyUser(email, password) {
     console.log("query starting");
     var query = client.query("SELECT * FROM users where email=$1", [email]);
     query.on("row", function(row, result) {
-      resolve(row);
+      if(row.password === password) {
+        resolve(row);
+      }
     });
     query.on("end", function(result) {
       reject();
