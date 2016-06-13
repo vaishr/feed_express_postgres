@@ -56,7 +56,7 @@ function runQueryList(queryStr) {
 
 function getFeed() {
   return runQueryList("SELECT * FROM posts;")
-    .then(function (result) {
+    .then(function(result) {
       var feedItemPromises = result.map(function(feedItem) {
         if (!feedItem.user_id) {
           return Q.resolve(feedItem);
@@ -73,7 +73,7 @@ function getFeed() {
       });
       return Q.all(feedItemPromises);
     })
-    .catch(function (error) {
+    .catch(function(error) {
       console.log(error);
   });
 }

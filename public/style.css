@@ -1,0 +1,51 @@
+html {
+  background-image: url("assets/img_background@2x.jpg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed; 
+  background-size: cover;
+}
+
+@font-face {
+  font-family: 'quicksand';
+  src: url("assets/quicksand/QuickSand-Regular.otf");
+  font-weight: normal;
+}
+
+@font-face{
+  font-family: 'quicksand';
+  src: url("assets/quicksand/QuickSand-Light.otf");
+  font-weight: lighter;
+}
+
+@font-face{
+  font-family: 'quicksand';
+  src: url("assets/quicksand/QuickSand-Bold.otf");
+  font-weight: bold;
+}
+
+h1 {
+  font-size: 50px;
+}
+
+h1, h2 {
+  color: white;
+  font-family: 'quicksand'; 
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+body {
+  text-align: center;
+}
+
+.container {
+  margin: auto;
+}
+
+.login-input-container {
+  background-image: url("assets/img_cardBackground@2x.png");
+  background-repeat: no-repeat;
+  margin: auto; 
+  display: block;
+}

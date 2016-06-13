@@ -21,7 +21,7 @@ app.set('view engine', 'hbs');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
-app.use('/assets', express.static('assets'));
+app.use(express.static('public'));
 app.use(express.static('bower_components'));
 
 app.get('/', function (req, res) {
@@ -43,20 +43,8 @@ app.post('/authenticate', function(req, res) {
 });
 
 app.get('/feed', function(req, res) { 
-  var feedPromise = getFeed();
-  feedPromise.then(function(result) {
-    // console.log(result);
-    // console.log('result.length', result.length)
-    // for (var i = 0; i < result.length; i++) {
-    //   if (!emails.result[i].user_id) {
-    //     var userPromise = getUserfromID(result[i].user_id);
-    //     userPromise.then(function(data) {
-    //       console.log("data", data);
-    //      // emails.result[i].user_id = data.email;
-    //     });
-    //   }
-    // }
-    // console.log(emails);
+  var feedPromises = getFeed();
+  feedPromises.then(function(result) {
       res.render('feed', {feed: result.reverse(), user: currentUser});
   })
 })
