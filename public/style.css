@@ -1,15 +1,6 @@
-html {
-  background-image: url("assets/img_background@2x.jpg");
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-attachment: fixed; 
-  background-size: cover;
-}
-
 @font-face {
   font-family: 'quicksand';
   src: url("assets/quicksand/QuickSand-Regular.otf");
-  font-weight: normal;
 }
 
 @font-face{
@@ -24,6 +15,19 @@ html {
   font-weight: bold;
 }
 
+html {
+  background-image: url("assets/img_background@2x.jpg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed; 
+  background-size: cover;
+}
+
+body {
+  text-align: center;
+  padding-top: 15px;
+}
+
 h1 {
   font-size: 50px;
 }
@@ -31,12 +35,32 @@ h1 {
 h1, h2 {
   color: white;
   font-family: 'quicksand'; 
-  font-weight: bold;
   letter-spacing: 1px;
 }
 
-body {
-  text-align: center;
+/*Styles for Login Page */
+
+hr {
+  top: 14px;
+  position: relative;
+  margin: 4px -4px;
+  display: block;
+  height: 1px;
+  border: 0;
+  border-color: gray;
+  border-top: 1px solid #ccc;
+  padding: 0; 
+
+}
+
+textarea:focus, input:focus{
+  outline: none;
+}
+
+input {
+  font-family: 'quicksand';
+  letter-spacing: 1px;
+  border: none;
 }
 
 .container {
@@ -45,7 +69,53 @@ body {
 
 .login-input-container {
   background-image: url("assets/img_cardBackground@2x.png");
-  background-repeat: no-repeat;
-  margin: auto; 
-  display: block;
-}
+  background-repeat:  no-repeat;
+  background-position: center center;
+  background-size: contain;
+  min-height: 300px; 
+  width: 400px;
+  position: relative;
+  top: -40px;
+ }
+
+ .login-fields {
+  position: absolute;
+  margin-top: 25px;
+  width: 380px;
+  padding: 0 10px;
+ }
+
+ .login-fields input{
+  padding-left: 17px;
+  font-size: 1.2em;
+  font-weight: bold;
+  width: 100%;
+  padding-top: 30px;
+  background: transparent;
+ }
+
+ #email {
+  padding-top: 82px;
+ }
+
+ #loginSubmit {
+   color: white;
+   font-size: 2em;
+   margin-top: 25px;
+   padding-top: 11px;
+   font-size: 16px;
+   cursor: pointer;
+ }
+
+ #submitButton{
+  background-image: url("assets/btn_signin@2x.png");
+  background-repeat:  no-repeat;
+  background-position: center center;
+  background-size: 100%;
+  margin-top: 33px;
+  width: 400px;
+  height: 100px;
+  border: none;
+  position: relative;
+  right: 9px;
+ }

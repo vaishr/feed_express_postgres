@@ -9,12 +9,15 @@
   <h1>Triangle</h1>
   <h2>Chat with interesting people in your city.</h2>
   <form action='/authenticate' method="POST">
-    <div class = "login-input-container">
-      Email:<br>
-      <input type="text" id="email" name="email"><br>
-      Password:<br>
-      <input type="text" id="password" name="password"><br>
-      <input id="loginSubmit" type="submit" value="Submit">
+    <div class = "login-input-container container">
+      <div class="login-fields">
+        <input type="text" id="email" placeholder="Email" name="email">
+        <hr>
+        <input type="text" id="password" placeholder="Password" name="password"><br>
+        <div id="submitButton">
+          <input id="loginSubmit" type="submit" value="SIGN IN">
+        </div>
+      </div>
     </div>
   </form>
 </div>
