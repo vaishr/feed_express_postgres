@@ -18,7 +18,6 @@ function verifyUser(email, password) {
   });
 }
 
-
 function addFeedItem(message, user_id) {
   return Q.promise(function(resolve, reject) {
     var ts = new Date().getTime();
@@ -39,23 +38,44 @@ function addFeedItem(message, user_id) {
   })
 }
 
-function getFeed() {
+function runQueryList(queryStr) {
   return Q.promise(function(resolve, reject) {
-    var feedPosts = [];
-    var query = client.query("SELECT * FROM posts;");
-    query.on("row", function(row, result) {
-      feedPosts.push(row);
-      resolve(feedPosts);
-    });
-     query.on("end", function(result) {
-      console.log("on query end");
-      reject();
+    var query = client.query(queryStr);
+    var list = [];
+    query.on("row", function(row) {
+      list.push(row);
+    })
+    query.on("end", function() {
+      resolve(list);
     });
     query.on("error", function(error) {
-      console.log("query error: ", error);
       reject(error);
     });
-  })
+  });
+}
+
+function getFeed() {
+  return runQueryList("SELECT * FROM posts;")
+    .then(function (result) {
+      var feedItemPromises = result.map(function(feedItem) {
+        if (!feedItem.user_id) {
+          return Q.resolve(feedItem);
+        }
+        var userPromise = getUserfromID(feedItem.user_id);
+        var feedItemEmailPromise = userPromise.then(function(userData) {
+          console.log(userData);
+          if (userData.email) {
+            feedItem.email = userData.email;
+          }
+          return feedItem;
+        });
+        return feedItemEmailPromise;
+      });
+      return Q.all(feedItemPromises);
+    })
+    .catch(function (error) {
+      console.log(error);
+  });
 }
 
 function getUserfromEmail(email) {
@@ -65,7 +85,7 @@ function getUserfromEmail(email) {
       resolve(row);
     })
     query.on("end", function(result) {
-      reject();
+      resolve();
     });
     query.on("error", function(error) {
       console.log("query error: ", error);
@@ -81,7 +101,7 @@ function getUserfromID(id) {
       resolve(row);
     })
     query.on("end", function(result) {
-      reject();
+      resolve();
     });
     query.on("error", function(error) {
       console.log("query error: ", error);

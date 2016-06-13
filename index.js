@@ -45,12 +45,19 @@ app.post('/authenticate', function(req, res) {
 app.get('/feed', function(req, res) { 
   var feedPromise = getFeed();
   feedPromise.then(function(result) {
-    var emails = {};
-    for (var i = 0; i < result.length; i++) {
-      emails.id = result[i].id;
-      // emails.email = result[i].email;
-    }
-    res.render('feed', {feed: result.reverse(), user: currentUser});
+    // console.log(result);
+    // console.log('result.length', result.length)
+    // for (var i = 0; i < result.length; i++) {
+    //   if (!emails.result[i].user_id) {
+    //     var userPromise = getUserfromID(result[i].user_id);
+    //     userPromise.then(function(data) {
+    //       console.log("data", data);
+    //      // emails.result[i].user_id = data.email;
+    //     });
+    //   }
+    // }
+    // console.log(emails);
+      res.render('feed', {feed: result.reverse(), user: currentUser});
   })
 })
 
