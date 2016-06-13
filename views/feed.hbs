@@ -1,29 +1,29 @@
 <!DOCTYPE html>
 <head>
-<link href="style.css" rel="stylesheet">
-<meta charset ="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
-<script type="text/javascript" src="jquery/dist/jquery.js"></script>
+  <link href="style.css" rel="stylesheet">
+  <meta charset ="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
+  <script type="text/javascript" src="jquery/dist/jquery.js"></script>
 </head>
 <body>
-<div class = "container">
-  <form action="/logout" method="POST">
-    <input type="image" src = "assets/btn_logout.svg" id="logoutBtn">
-  </form>
-  <div id="result"></div>
-  <div class="feed">
-    {{#each feed}}
+  <div class = "container">
+    <form action="/logout" method="POST">
+      <input type="image" src = "assets/btn_logout.svg" id="logoutBtn">
+    </form>
+    <div id="result"></div>
+    <div class="feed">
+      {{#each feed}}
       <div class = "feedItem">
         <div class="userEmail">
           {{email}}
         </div>
         <div class="feedMessage">
-           {{feed_message}}
-        </div>
-      </div>
-    {{/each}}
-  </div > 
-  <button class="btnCompose" onclick="openModal()"> </button>
-  <div class="modalBackground">
+         {{feed_message}}
+       </div>
+     </div>
+     {{/each}}
+   </div > 
+   <button class="btnCompose" onclick="openModal()"> </button>
+   <div class="modalBackground">
     <form action="/feed" method="POST">
       <textarea class="modalTextArea" type="text" id="newFeedPost" placeholder="What would you like to say?" name="feed_message"></textarea>
       <button id="newPostSubmit" type="submit" onclick="addPost()">Submit</button>
@@ -32,7 +32,7 @@
 </div>
 </body>
 <script type="text/javascript">
-var modalBackground = $('.modalBackground');
+  var modalBackground = $('.modalBackground');
   function openModal() {
     modalBackground.addClass('show');
   }
@@ -47,18 +47,18 @@ var modalBackground = $('.modalBackground');
   function addPost() {
     var newPost = $('#newFeedPost').val();
     var request = $.ajax({
-        url: "/feed",
-        type: "post",
-       data: {
+      url: "/feed",
+      type: "post",
+      data: {
         feed_message: newPost,
         user: currentUser
       }
     });
     request.done(function (response, textStatus, jqXHR){
-        console.log("completed "+ response);
+      console.log("completed "+ response);
     });
     request.fail(function (){
-       $('#result').html('error');
-     });
-}
+     $('#result').html('error');
+   });
+  }
 </script>

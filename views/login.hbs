@@ -1,26 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link href="style.css" rel="stylesheet">
-<meta charset ="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
+  <link href="style.css" rel="stylesheet">
+  <meta charset ="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-<div class = "container">
-  <h1>Triangle</h1>
-  <h2>Chat with interesting people in your city.</h2>
-  <form action='/authenticate' method="POST" id="loginForm">
-    <div class = "login-input-container container">
-      <div class="login-fields">
-        <input type="text" id="email" placeholder="Email" name="email">
-        <hr>
-        <input type="text" id="password" placeholder="Password" name="password"><br>
-        <div id="submitButton">
-          <input id="loginSubmit" type="submit" value="SIGN IN">
+  <div class = "container">
+    <h1>Triangle</h1>
+    <h2>Chat with interesting people in your city.</h2>
+    <form action='/authenticate' method="POST" id="loginForm">
+      <div class = "login-input-container container">
+        <div class="login-fields">
+          <input type="text" id="email" placeholder="Email" name="email">
+          <hr>
+          <input type="text" id="password" placeholder="Password" name="password"><br>
+          <div id="submitButton">
+            <input id="loginSubmit" type="submit" value="SIGN IN">
+          </div>
         </div>
       </div>
-    </div>
-  </form>
-</div>
-<div id="loginErr"> Invalid Email or Password</div>
+    </form>
+  </div>
+  <div id="loginErr"> Invalid Email or Password</div>
 </body>
 </html>

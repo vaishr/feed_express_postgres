@@ -32,22 +32,28 @@ router.get('/feed', function(req, res) {
   feedPromises.then(function(result) {
       res.render('feed', {feed: result.reverse(), user: currentUser});
   })
-})
+});
 
 router.post('/feed', function(req, res) {
   console.log('req.body.feed_message', req.body.feed_message);
-  addFeedItem(req.body.feed_message, currentUser).then(function(result) {
-    console.log("data", result);
-  }).catch(function(err) {
-    console.log("err", err);
-  });
-  res.redirect('/feed');
+  console.log('currentUser', currentUser);
+  if (!currentUser) {
+    res.redirect('/feed');
+  }
+  else {
+    addFeedItem(req.body.feed_message, currentUser).then(function(result) {
+      console.log("data", result);
+    }).catch(function(err) {
+      console.log("err", err);
+    });
+    res.redirect('/feed');
+  }
 });
 
 router.post('/logout', function(req, res) {
   currentUser = null;
   res.redirect('/');
-})
+});
 
 router.get('/:user', function(req, res) {
   var user = req.params.user;
