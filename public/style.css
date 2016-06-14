@@ -304,12 +304,20 @@ hr {
 .profilePic img {
     height: 200px;
     width: auto;
+    margin-top: 18px;
+}
+
+@media (max-width: 900px) {
+  #backButton {
+    left: -18%;
+  }
 }
 
 .profileContainer {
     text-align: center;
     color: white;
     width: 80%;
+    margin: auto;
 }
 
 .profileEmail {
@@ -318,9 +326,23 @@ hr {
 
 .profileDescription {
     font-size: 1.2em;
+    padding-top: 8px;
+}
+
+.profileInfo {
+  letter-spacing: 1px;
+  margin-top: -28px;
 }
 
 #backButton {
     width: 115px;
     height: auto;
+    position: relative;
+}
+
+.profileHeader {
+  position: fixed;
+  width: 100%;
+  top: -30px;
+  right: 20%;
 }
