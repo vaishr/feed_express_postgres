@@ -10,6 +10,12 @@
     font-weight: normal;
 }
 
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
 html {
     background-repeat: no-repeat;
     background-position: center center;
@@ -40,6 +46,7 @@ input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
     transition: background-color 5000s ease-in-out 0s;
+    color: #3e3e3e;
 }
 
 textarea:focus,
@@ -60,6 +67,7 @@ a {
 
 .container {
     margin: auto;
+    padding-top: 81px;
 }
 
 
@@ -74,6 +82,12 @@ a {
     background-repeat: no-repeat;
     background-position: center center;
     background-size: contain;
+    margin: auto;
+}
+
+.containerLogin {
+    margin: auto;
+    margin-top: 42px;
 }
 
 .login-fields {
@@ -148,7 +162,8 @@ hr {
 /*Styles for Feed*/
 
 #logoutBtn {
-    position: fixed;
+    position: relative;
+    left: -23px;
     width: 72px;
     margin: auto;
 }
@@ -192,21 +207,36 @@ hr {
 }
 
 .feedHeader {
+    left: 0;
     height: 81px;
+    position: fixed;
+    width: 100%;
+    z-index: 100000;
+    top: 0;
+    background-color: #2E2A5C;
+}
+
+.feedHeader form {
+    display: block;
+    max-width: 550px;
+    margin: 0 auto;
 }
 
 #newPostSubmit {
-    position: fixed;
+    -webkit-appearance: none;
     background-color: transparent;
     border: 0;
-    background-image: url("assets/btn_post@2x.png");
-    background-size: contain;
-    background-repeat: no-repeat;
     font-family: 'quicksand';
     font-size: 1.2em;
     min-height: 58px;
     width: 100%;
     color: white;
+    cursor: pointer;
+    margin: 14px 0px;
+    background: #A18DFF;
+    border-radius: 12px;
+    font-weight: bold;
+    letter-spacing: 1px;
 }
 
 .btnCompose {
@@ -220,6 +250,7 @@ hr {
     left: 50%;
     transform: translateX(-50%);
     bottom: 0;
+    cursor: pointer;
 }
 
 .modalBackground {
@@ -232,6 +263,7 @@ hr {
     right: 0;
     bottom: 0;
     background: rgba(40, 40, 40, 0.8);
+    z-index: 2000000;
 }
 
 .modalBackground.show {
@@ -249,14 +281,15 @@ hr {
     resize: none;
     border: none;
     font-size: 1.25em;
+    font-weight: bold;
     background: white;
     border-radius: 11px;
     box-shadow: rgba(0, 0, 0, 0.8) 0 0 8px -2px;
     font-family: 'quicksand';
-    font-weight: normal;
     height: 200px;
-    padding: 1.5em;
     letter-spacing: 1px;
+    padding: 27px;
+    width: 100%;
 }
 
 
@@ -271,16 +304,20 @@ hr {
 .profilePic img {
     height: 200px;
     width: auto;
-    */
 }
 
 .profileContainer {
     text-align: center;
     color: white;
+    width: 80%;
 }
 
 .profileEmail {
-    font-size: 1.7em;
+    font-size: 1.8em;
+}
+
+.profileDescription {
+    font-size: 1.2em;
 }
 
 #backButton {

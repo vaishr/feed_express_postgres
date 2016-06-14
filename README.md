@@ -98,10 +98,4 @@ password: "test"
 Once you are logged in successfully you will be redirected to the feed where you can post a new feed post for the logged in user.
 
 
-## Possible Improvements
-
-* Deploy database to make set up simpler
-* Implement new posts feature to show which posts are newly added
-* Implement sessions and hash passwords for more security
-
 
