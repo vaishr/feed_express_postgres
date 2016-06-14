@@ -15,9 +15,12 @@
     <div class="feed">
       {{#each feed}}
       <div class = "feedItem">
+      <form class="profileForm" action="/users/{{username}}" method="POST">
         <div class="userEmail">
-          {{email}}
+        <a href="/users/{{username}}" onclick="goToProfile()">
+          {{email}}</a>
         </div>
+      </form>
         <div class="feedMessage">
          {{feed_message}}
        </div>
@@ -28,7 +31,7 @@
    <div class="modalBackground">
     <form action="/feed" method="POST">
       <textarea class="modalTextArea" type="text" id="newFeedPost" placeholder="What do you want to say?" name="feed_message"></textarea>
-      <button id="newPostSubmit" type="submit" onclick="addPost()">Submit</button>
+      <button id="newPostSubmit" type="submit" onclick="addPost()">Post</button>
     </form>
   </div>
 </div>
@@ -45,7 +48,25 @@
     }
   }
 
-  modalBackground.on('click',closeModal)
+  modalBackground.on('click', closeModal);
+
+  function profileLink() {   
+    var profileForms = $('.profileForm');
+    profileForms.submit();      
+  }
+
+  function goToProfile() {
+    var request = $.ajax({
+      url: "/users/:username",
+      type: "GET"
+    });
+    request.done(function (response, textStatus, jqXHR){
+      console.log("completed "+ response);
+    });
+    request.fail(function (){
+     console.log('err');
+   });
+  }
 
   function addPost() {
     var newPost = $('#newFeedPost').val();
@@ -61,7 +82,7 @@
       console.log("completed "+ response);
     });
     request.fail(function (){
-     $('#result').html('error');
+     console.log('err');
    });
   }
 </script>

@@ -69,6 +69,9 @@ function getFeed() {
           if (userData.email) {
             feedItem.email = userData.email;
           }
+          if (userData.username) {
+            feedItem.username = userData.username;
+          }
           return feedItem;
         });
         return feedItemEmailPromise;
@@ -112,8 +115,25 @@ function getUserfromID(id) {
   })
 }
 
+function getUserfromUsername(username) {
+  return Q.promise(function(resolve, reject) {
+    var query = client.query("SELECT * from users WHERE username=$1", [id]);
+    query.on("row", function(row, result) {
+      resolve(row);
+    })
+    query.on("end", function(result) {
+      resolve();
+    });
+    query.on("error", function(error) {
+      console.log("query error: ", error);
+      reject(error);
+    });
+  })
+}
+
 exports.verifyUser = verifyUser;
 exports.getFeed = getFeed;
 exports.getUserfromID = getUserfromID;
 exports.getUserfromEmail = getUserfromEmail;
+exports.getUserfromUsername = getUserfromUsername;
 exports.addFeedItem = addFeedItem;

@@ -1,19 +1,13 @@
 @font-face {
   font-family: 'quicksand';
-  src: url("assets/quicksand/QuickSand-Regular.otf");
-  font-weight: normal;
-}
-
-@font-face {
-  font-family: 'quicksand';
-  src: url("assets/quicksand/QuickSand-Light.otf");
-  font-weight: lighter;
-}
-
-@font-face {
-  font-family: 'quicksand';
-  src: url("assets/quicksand/QuickSand-Bold.otf");
+  src: url("assets/quicksand/Quicksand-Bold.otf");
   font-weight: bold;
+}
+
+@font-face {
+  font-family: 'quicksand';
+  src: url("assets/quicksand/Quicksand-Regular.otf");
+  font-weight: normal;
 }
 
 html {
@@ -54,6 +48,11 @@ textarea:focus, button:focus, input:focus{
 input {
   letter-spacing: 1px;
   border: none;
+}
+
+a {
+  text-decoration: none;
+  color: #3e3e3e;
 }
 
 .container {
@@ -143,9 +142,12 @@ input {
 
  #logoutBtn {
   position: fixed;
-  z-index: 10000;
   width: 72px;
   margin: auto;
+ }
+
+ .feed {
+  padding-bottom: 50px;
  }
 
  .feedItem {
@@ -155,23 +157,25 @@ input {
   background-repeat:  no-repeat;
   background-position: center center;
   background-size: contain;
-  border-radius: 7px;
+  border-radius: 11px;
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
   max-width: 550px;
   margin: auto;
   margin-bottom: 3%;
   word-wrap: break-word;
+  cursor: default;
  }
 
  .userEmail, .feedMessage {
   padding: 5%;
   letter-spacing: 1px;
   font-size: 1.25em;
+  font-weight: normal;
  }
 
  .userEmail {
-  color: #3e3e3e;
   padding-bottom: 19px;
+  cursor: pointer;
  }
 
  .feedMessage {
@@ -185,7 +189,16 @@ input {
 
  #newPostSubmit{
   position: fixed;
-  background-image: url("assets/img_cardBackground@2x.png");
+  background-color: transparent;
+  border: 0;
+  background-image: url("assets/btn_post@2x.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  font-family: 'quicksand';
+  font-size: 1.2em;
+  min-height: 58px;
+  width: 100%;
+  color: white;
  }
 
  .btnCompose {
@@ -230,12 +243,13 @@ input {
   width: 100%;
   font-size: 1.25em;
   background: white;
-  border-radius: 10px;
+  border-radius: 11px;
   box-shadow: rgba(0,0,0,0.8) 0 0 8px -2px;
   font-family: 'quicksand';
-  font-weight: bold;
+  font-weight: normal;
   height: 300px;
   padding: 1.5em;
+  letter-spacing: 1px;
 }
 
 /* Styles for Profile */ 

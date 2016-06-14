@@ -8,10 +8,14 @@ Clone or download the repo.
 Make sure you have postgresDB installed on your computer and open postgres connection in new terminal window.   
 
 In postgres window run: 
-```CREATE DATABASE triangle;```
+```
+CREATE DATABASE triangle;```
 
 Then run:
-```\l;```
+```
+\l;
+```
+
 and make sure you see the new triange database in your list of databases.
 
 Then connect to this db with this command:
@@ -64,7 +68,7 @@ In terminal from root project directory run:
 
 to start server and navigate to localhost:3000 in your browser.
 
-Then you can login using the email and password of any user in your users table (if you populated your tables with the test data the easiest email/password combo to log in with is email "test@gmail.com" with password "test").
+Then you can login using the email and password of any user in your users table (if you populated your tables with the test data the easiest email/password combo to log in with is email "testuser@gmail.com" with password "test").
 
 Once you are logged in successfully you will be redirected to the feed where you can post a new feed post for the logged in user.
 

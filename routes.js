@@ -4,6 +4,7 @@ var router = express.Router();
 var verifyUser = require('./helpers').verifyUser;
 var getUserfromID = require('./helpers').getUserfromID;
 var getUserfromEmail = require('./helpers').getUserfromEmail;
+var getUserfromUsername = require('./helpers').getUserfromUsername;
 var getFeed = require('./helpers').getFeed;
 var addFeedItem = require('./helpers').addFeedItem;
 
@@ -59,9 +60,12 @@ router.post('/logout', function(req, res) {
   res.redirect('/');
 });
 
-router.get('/:user', function(req, res) {
-  var user = req.params.user;
-  res.render('profile', {user: user});
+router.get('/users/:username', function(req, res) {
+  var username = req.params.username;
+  var userPromise = getUserfromUsername(username);
+  userPromise.then(function(result) {
+     res.render('profile', {user: result});
+  });
 });
 
 module.exports = router;
