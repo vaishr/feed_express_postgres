@@ -34,6 +34,10 @@ router.get('/feed', function(req, res) {
   })
 });
 
+router.post('/back', function(req, res) {
+  res.redirect('/feed');
+})
+
 router.post('/feed', function(req, res) {
   console.log('req.body.feed_message', req.body.feed_message);
   console.log('currentUser', currentUser);

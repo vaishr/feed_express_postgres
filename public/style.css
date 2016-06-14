@@ -91,7 +91,7 @@ input {
   padding-top: 30px;
   background: transparent;
   letter-spacing: 1px;
-  color: #31253B;
+  color: #3e3e3e;
   font-family: 'quicksand';
  }
 
@@ -145,29 +145,42 @@ input {
   position: fixed;
   z-index: 10000;
   width: 72px;
+  margin: auto;
  }
 
  .feedItem {
-  min-height: 170px;
-  margin-bottom: 1%;
+  min-height: 60px;
   position: relative;
-  background-image: url("assets/img_cardBackground@2x.png");
+  background: white;
   background-repeat:  no-repeat;
   background-position: center center;
   background-size: contain;
+  border-radius: 7px;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+  max-width: 550px;
+  margin: auto;
+  margin-bottom: 3%;
+  word-wrap: break-word;
  }
 
- .userEmail .feedMessage {
-  position: absolute;
-  float: center;
+ .userEmail, .feedMessage {
+  padding: 5%;
+  letter-spacing: 1px;
+  font-size: 1.25em;
  }
 
  .userEmail {
   color: #3e3e3e;
+  padding-bottom: 19px;
  }
 
  .feedMessage {
   color: #7e7e7e;
+  padding-top: 0px;
+ }
+
+ .feedHeader {
+  height: 81px;
  }
 
  #newPostSubmit{
@@ -181,23 +194,23 @@ input {
   background-image: url("assets/btn_compose@2x.png");
   background-size: cover;
   position: fixed;
-  width: 128px;
-  height: 128px;
+  width: 105px;
+  height: 105px;
   left: 50%;
-  transform:translatex(-50%);
+  transform: translateX(-50%);
   bottom: 0;
  }
 
  .modalBackground {
   display: none;
-  position:fixed;
+  position: fixed;
   height: 100%;
   width: 100%;
   left: 0;
   top: 0;
   right: 0;
   bottom: 0;
-  background: rgba(40,40,40,0.5);
+  background: rgba(40,40,40,0.8);
  }
 
 .modalBackground.show {
@@ -206,21 +219,24 @@ input {
 
 .modalBackground form {
   position: absolute;
-  width: 70%;
   top: 50%;
   left: 50%;
   transform:translate(-50%,-50%);
 }
 
 .modalTextArea {
-  resize:none;
-  border:none;
-  width:100%;
-  font-size:1.5em;
-  background:white;
-  border-radius:28px;
-  box-shadow: rgba(0,0,0,0.8) 0 4px 8px -2px;
-  height: 400px;
+  resize: none;
+  border: none;
+  width: 100%;
+  font-size: 1.25em;
+  background: white;
+  border-radius: 10px;
+  box-shadow: rgba(0,0,0,0.8) 0 0 8px -2px;
+  font-family: 'quicksand';
+  font-weight: bold;
+  height: 300px;
+  padding: 1.5em;
 }
 
+/* Styles for Profile */ 
  
