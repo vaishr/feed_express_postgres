@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html>
 <head>
   <link href="style.css" rel="stylesheet">
   <meta charset ="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
@@ -15,12 +16,10 @@
     <div class="feed">
       {{#each feed}}
       <div class = "feedItem">
-      <form class="profileForm" action="/users/{{username}}" method="POST">
         <div class="userEmail">
-        <a href="/users/{{username}}" onclick="goToProfile()">
+        <a href="/users/{{username}}">
           {{email}}</a>
         </div>
-      </form>
         <div class="feedMessage">
          {{feed_message}}
        </div>
@@ -55,19 +54,6 @@
     profileForms.submit();      
   }
 
-  function goToProfile() {
-    var request = $.ajax({
-      url: "/users/:username",
-      type: "GET"
-    });
-    request.done(function (response, textStatus, jqXHR){
-      console.log("completed "+ response);
-    });
-    request.fail(function (){
-     console.log('err');
-   });
-  }
-
   function addPost() {
     var newPost = $('#newFeedPost').val();
     var request = $.ajax({
@@ -86,3 +72,4 @@
    });
   }
 </script>
+</html>

@@ -11,11 +11,11 @@
 }
 
 html {
-  background-image: url("assets/img_background@2x.jpg");
   background-repeat: no-repeat;
   background-position: center center;
   background-attachment: fixed; 
   background-size: cover;
+  background-image: url("assets/img_background@2x.jpg");
 }
 
 body {
@@ -93,6 +93,10 @@ a {
   color: #3e3e3e;
   font-family: 'quicksand';
  }
+
+.loginfields-separator{
+  display: none;
+}
 
  #email {
   padding-top: 82px;
@@ -240,17 +244,42 @@ a {
 .modalTextArea {
   resize: none;
   border: none;
-  width: 100%;
   font-size: 1.25em;
   background: white;
   border-radius: 11px;
   box-shadow: rgba(0,0,0,0.8) 0 0 8px -2px;
   font-family: 'quicksand';
   font-weight: normal;
-  height: 300px;
+  height: 200px;
   padding: 1.5em;
   letter-spacing: 1px;
 }
 
 /* Styles for Profile */ 
+
+.profileHeader {
+  position: fixed;
+  height: 30px;
+  font-weight: bold;
+}
+
+.profilePic img {
+  height: 200px;
+  width: auto;*/
+}
+
+.profileContainer{
+  text-align: center;
+  color: white;
+}
+
+.profileEmail {
+  font-size: 1.7em;
+}
+
+#backButton {
+  width: 115px;
+  height: auto;
+}
+
  

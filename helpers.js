@@ -117,7 +117,7 @@ function getUserfromID(id) {
 
 function getUserfromUsername(username) {
   return Q.promise(function(resolve, reject) {
-    var query = client.query("SELECT * from users WHERE username=$1", [id]);
+    var query = client.query("SELECT * from users WHERE username=$1", [username]);
     query.on("row", function(row, result) {
       resolve(row);
     })

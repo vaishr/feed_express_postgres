@@ -3,6 +3,7 @@
 <head>
   <link href="style.css" rel="stylesheet">
   <meta charset ="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
+  <script type="text/javascript" src="jquery/dist/jquery.js"></script>
 </head>
 <body>
   <div class = "container">
@@ -12,7 +13,7 @@
       <div class = "login-input-container container">
         <div class="login-fields">
           <input type="text" id="email" placeholder="Email" name="email">
-          <hr>
+          <hr class="loginfields-separator">
           <input type="password" id="password" placeholder="Password" name="password"><br>
           <div id="submitButton">
             <input id="loginSubmit" type="submit" value="SIGN IN">
@@ -23,4 +24,9 @@
   </div>
   <div id="loginErr"> Invalid Email or Password</div>
 </body>
+<script>
+  $(window).load(function() {
+    $('.loginfields-separator').show();
+  });
+</script>
 </html>
