@@ -6,22 +6,22 @@
   <script type="text/javascript" src="jquery/dist/jquery.js"></script>
 </head>
 <body>
-<div class = "container profileContainer">
-<header class = "profileHeader">
-  <form action= "/feed" method="GET">
-    <input type="image" id="backButton" src="../assets/btn_back.svg" value="Back" onclick="goBack()">
-  </form>
-</header>
-<div class= "profilePic">
-  <img src = "../assets/img_user@2x.png">
-</div>
-<div class = "profileEmail">
-  {{user.email}}
-</div>
-<div class = "profileDescription">
-  {{user.description}}
-</div>
-</div>
+  <div class = "container profileContainer">
+    <header class = "profileHeader">
+      <form action= "/feed" method="GET">
+        <input type="image" id="backButton" src="../assets/btn_back.svg" value="Back" onclick="goBack()">
+      </form>
+    </header>
+    <div class= "profilePic">
+      <img src = "../assets/img_user@2x.png">
+    </div>
+    <div class = "profileEmail">
+      {{user.email}}
+    </div>
+    <div class = "profileDescription">
+      {{user.description}}
+    </div>
+  </div>
 </body>
 <script>
   function goBack() {

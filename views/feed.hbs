@@ -6,34 +6,34 @@
   <script type="text/javascript" src="jquery/dist/jquery.js"></script>
 </head>
 <body>
-<div class = "container">
-<header class = "feedHeader">
-    <form action="/logout" method="POST">
-      <input type="image" src = "assets/btn_logout.svg" id="logoutBtn">
-    </form>
-</header>
+  <div class = "container">
+    <header class = "feedHeader">
+      <form action="/logout" method="POST">
+        <input type="image" src = "assets/btn_logout.svg" id="logoutBtn">
+      </form>
+    </header>
     <div id="result"></div>
     <div class="feed">
       {{#each feed}}
       <div class = "feedItem">
         <div class="userEmail">
-        <a href="/users/{{username}}">
-          {{email}}</a>
-        </div>
-        <div class="feedMessage">
-         {{feed_message}}
+          <a href="/users/{{username}}">
+            {{email}}</a>
+          </div>
+          <div class="feedMessage">
+           {{feed_message}}
+         </div>
        </div>
-     </div>
-     {{/each}}
-   </div > 
-   <button class="btnCompose" onclick="openModal()"> </button>
-   <div class="modalBackground">
-    <form action="/feed" method="POST">
-      <textarea class="modalTextArea" type="text" id="newFeedPost" placeholder="What do you want to say?" name="feed_message"></textarea>
-      <button id="newPostSubmit" type="submit" onclick="addPost()">Post</button>
-    </form>
+       {{/each}}
+     </div > 
+     <button class="btnCompose" onclick="openModal()"> </button>
+     <div class="modalBackground">
+      <form action="/feed" method="POST">
+        <textarea class="modalTextArea" type="text" id="newFeedPost" placeholder="What do you want to say?" name="feed_message"></textarea>
+        <button id="newPostSubmit" type="submit" onclick="addPost()">Post</button>
+      </form>
+    </div>
   </div>
-</div>
 </body>
 <script type="text/javascript">
   var modalBackground = $('.modalBackground');

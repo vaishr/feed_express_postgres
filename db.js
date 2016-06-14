@@ -9,4 +9,3 @@ client.query('CREATE TABLE IF NOT EXISTS users(id SERIAL PRIMARY KEY, firstname 
 client.query('CREATE TABLE IF NOT EXISTS posts(id SERIAL PRIMARY KEY, feed_message VARCHAR(600) not null, created_at VARCHAR(40), user_id integer REFERENCES users (id))');
 
 exports.client = client;
-

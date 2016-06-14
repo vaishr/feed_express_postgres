@@ -1,37 +1,38 @@
 @font-face {
-  font-family: 'quicksand';
-  src: url("assets/quicksand/Quicksand-Bold.otf");
-  font-weight: bold;
+    font-family: 'quicksand';
+    src: url("assets/quicksand/Quicksand-Bold.otf");
+    font-weight: bold;
 }
 
 @font-face {
-  font-family: 'quicksand';
-  src: url("assets/quicksand/Quicksand-Regular.otf");
-  font-weight: normal;
+    font-family: 'quicksand';
+    src: url("assets/quicksand/Quicksand-Regular.otf");
+    font-weight: normal;
 }
 
 html {
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-attachment: fixed; 
-  background-size: cover;
-  background-image: url("assets/img_background@2x.jpg");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    background-size: cover;
+    background-image: url("assets/img_background@2x.jpg");
 }
 
 body {
-  padding-top: 15px;
-  font-family: 'quicksand';
-  font-weight: bold;
+    padding-top: 15px;
+    font-family: 'quicksand';
+    font-weight: bold;
 }
 
 h1 {
-  font-size: 50px;
+    font-size: 50px;
 }
 
-h1, h2 {
-  color: white; 
-  letter-spacing: 1px;
-  text-align: center;
+h1,
+h2 {
+    color: white;
+    letter-spacing: 1px;
+    text-align: center;
 }
 
 input:-webkit-autofill,
@@ -41,245 +42,248 @@ input:-webkit-autofill:active {
     transition: background-color 5000s ease-in-out 0s;
 }
 
-textarea:focus, button:focus, input:focus{
-  outline: none;
+textarea:focus,
+button:focus,
+input:focus {
+    outline: none;
 }
 
 input {
-  letter-spacing: 1px;
-  border: none;
+    letter-spacing: 1px;
+    border: none;
 }
 
 a {
-  text-decoration: none;
-  color: #3e3e3e;
+    text-decoration: none;
+    color: #3e3e3e;
 }
 
 .container {
-  margin: auto;
+    margin: auto;
 }
 
 
 /*Styles for Login Page */
 
-
 .login-input-container {
-  min-height: 300px; 
-  width: 400px;
-  position: relative;
-  top: -40px;
-  background-image: url("assets/img_cardBackground@2x.png");
-  background-repeat:  no-repeat;
-  background-position: center center;
-  background-size: contain;
- }
-
- .login-fields {
-  position: absolute;
-  margin-top: 25px;
-  width: 380px;
-  padding: 0 10px;
-  text-align: center;
- }
-
- .login-fields input{
-  padding-left: 17px;
-  font-size: 1.2em;
-  font-weight: bold;
-  width: 100%;
-  padding-top: 30px;
-  background: transparent;
-  letter-spacing: 1px;
-  color: #3e3e3e;
-  font-family: 'quicksand';
- }
-
-.loginfields-separator{
-  display: none;
+    min-height: 300px;
+    width: 400px;
+    position: relative;
+    top: -40px;
+    background-image: url("assets/img_cardBackground@2x.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
 }
 
- #email {
-  padding-top: 82px;
- }
-
- #loginSubmit {
-   color: white;
-   font-size: 2em;
-   margin-top: 27px;
-   padding-top: 11px;
-   font-size: 17px;
-   cursor: pointer;
- }
-
- #submitButton{
-  margin-top: 33px;
-  width: 400px;
-  height: 100px;
-  border: none;
-  position: relative;
-  right: 9px;
-  background-image: url("assets/btn_signin@2x.png");
-  background-repeat:  no-repeat;
-  background-position: center center;
-  background-size: 100%;
- }
-
- #loginErr {
-  color: red;
-  font-weight: normal;
-  display: none;
- }
-
- hr {
-  top: 14px;
-  position: relative;
-  margin: 4px -4px;
-  display: block;
-  height: 1px;
-  border: 0;
-  border-color: gray;
-  border-top: 1px solid #ccc;
-  padding: 0; 
+.login-fields {
+    position: absolute;
+    margin-top: 25px;
+    width: 380px;
+    padding: 0 10px;
+    text-align: center;
 }
 
- /*Styles for Feed*/ 
+.login-fields input {
+    padding-left: 17px;
+    font-size: 1.2em;
+    font-weight: bold;
+    width: 100%;
+    padding-top: 30px;
+    background: transparent;
+    letter-spacing: 1px;
+    color: #3e3e3e;
+    font-family: 'quicksand';
+}
 
- #logoutBtn {
-  position: fixed;
-  width: 72px;
-  margin: auto;
- }
+.loginfields-separator {
+    display: none;
+}
 
- .feed {
-  padding-bottom: 50px;
- }
+#email {
+    padding-top: 82px;
+}
 
- .feedItem {
-  min-height: 60px;
-  position: relative;
-  background: white;
-  background-repeat:  no-repeat;
-  background-position: center center;
-  background-size: contain;
-  border-radius: 11px;
-  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
-  max-width: 550px;
-  margin: auto;
-  margin-bottom: 3%;
-  word-wrap: break-word;
-  cursor: default;
- }
+#loginSubmit {
+    color: white;
+    font-size: 2em;
+    margin-top: 27px;
+    padding-top: 11px;
+    font-size: 17px;
+    cursor: pointer;
+}
 
- .userEmail, .feedMessage {
-  padding: 5%;
-  letter-spacing: 1px;
-  font-size: 1.25em;
-  font-weight: normal;
- }
+#submitButton {
+    margin-top: 33px;
+    width: 400px;
+    height: 100px;
+    border: none;
+    position: relative;
+    right: 9px;
+    background-image: url("assets/btn_signin@2x.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 100%;
+}
 
- .userEmail {
-  padding-bottom: 19px;
-  cursor: pointer;
- }
+#loginErr {
+    color: red;
+    font-weight: normal;
+    display: none;
+}
 
- .feedMessage {
-  color: #7e7e7e;
-  padding-top: 0px;
- }
+hr {
+    top: 14px;
+    position: relative;
+    margin: 4px -4px;
+    display: block;
+    height: 1px;
+    border: 0;
+    border-color: gray;
+    border-top: 1px solid #ccc;
+    padding: 0;
+}
 
- .feedHeader {
-  height: 81px;
- }
 
- #newPostSubmit{
-  position: fixed;
-  background-color: transparent;
-  border: 0;
-  background-image: url("assets/btn_post@2x.png");
-  background-size: contain;
-  background-repeat: no-repeat;
-  font-family: 'quicksand';
-  font-size: 1.2em;
-  min-height: 58px;
-  width: 100%;
-  color: white;
- }
+/*Styles for Feed*/
 
- .btnCompose {
-  border: none;
-  background: transparent;
-  background-image: url("assets/btn_compose@2x.png");
-  background-size: cover;
-  position: fixed;
-  width: 105px;
-  height: 105px;
-  left: 50%;
-  transform: translateX(-50%);
-  bottom: 0;
- }
+#logoutBtn {
+    position: fixed;
+    width: 72px;
+    margin: auto;
+}
 
- .modalBackground {
-  display: none;
-  position: fixed;
-  height: 100%;
-  width: 100%;
-  left: 0;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(40,40,40,0.8);
- }
+.feed {
+    padding-bottom: 50px;
+}
+
+.feedItem {
+    min-height: 60px;
+    position: relative;
+    background: white;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+    border-radius: 11px;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+    max-width: 550px;
+    margin: auto;
+    margin-bottom: 3%;
+    word-wrap: break-word;
+    cursor: default;
+}
+
+.userEmail,
+.feedMessage {
+    padding: 5%;
+    letter-spacing: 1px;
+    font-size: 1.25em;
+    font-weight: normal;
+}
+
+.userEmail {
+    padding-bottom: 19px;
+    cursor: pointer;
+}
+
+.feedMessage {
+    color: #7e7e7e;
+    padding-top: 0px;
+}
+
+.feedHeader {
+    height: 81px;
+}
+
+#newPostSubmit {
+    position: fixed;
+    background-color: transparent;
+    border: 0;
+    background-image: url("assets/btn_post@2x.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    font-family: 'quicksand';
+    font-size: 1.2em;
+    min-height: 58px;
+    width: 100%;
+    color: white;
+}
+
+.btnCompose {
+    border: none;
+    background: transparent;
+    background-image: url("assets/btn_compose@2x.png");
+    background-size: cover;
+    position: fixed;
+    width: 105px;
+    height: 105px;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0;
+}
+
+.modalBackground {
+    display: none;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(40, 40, 40, 0.8);
+}
 
 .modalBackground.show {
-  display: block;
+    display: block;
 }
 
 .modalBackground form {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform:translate(-50%,-50%);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .modalTextArea {
-  resize: none;
-  border: none;
-  font-size: 1.25em;
-  background: white;
-  border-radius: 11px;
-  box-shadow: rgba(0,0,0,0.8) 0 0 8px -2px;
-  font-family: 'quicksand';
-  font-weight: normal;
-  height: 200px;
-  padding: 1.5em;
-  letter-spacing: 1px;
+    resize: none;
+    border: none;
+    font-size: 1.25em;
+    background: white;
+    border-radius: 11px;
+    box-shadow: rgba(0, 0, 0, 0.8) 0 0 8px -2px;
+    font-family: 'quicksand';
+    font-weight: normal;
+    height: 200px;
+    padding: 1.5em;
+    letter-spacing: 1px;
 }
 
-/* Styles for Profile */ 
+
+/* Styles for Profile */
 
 .profileHeader {
-  position: fixed;
-  height: 30px;
-  font-weight: bold;
+    position: fixed;
+    height: 30px;
+    font-weight: bold;
 }
 
 .profilePic img {
-  height: 200px;
-  width: auto;*/
+    height: 200px;
+    width: auto;
+    */
 }
 
-.profileContainer{
-  text-align: center;
-  color: white;
+.profileContainer {
+    text-align: center;
+    color: white;
 }
 
 .profileEmail {
-  font-size: 1.7em;
+    font-size: 1.7em;
 }
 
 #backButton {
-  width: 115px;
-  height: auto;
+    width: 115px;
+    height: auto;
 }
-
- 

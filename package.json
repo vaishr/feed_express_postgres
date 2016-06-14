@@ -1,27 +1,30 @@
 {
-  "name": "project",
-  "version": "0.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "start": "nodemon index.js"
-  },
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "body-parser": "^1.15.1",
-    "bower": "^1.7.9",
-    "consolidate": "^0.14.1",
-    "express": "^4.13.4",
-    "express-router": "0.0.1",
-    "handlebars": "^4.0.5",
-    "nodemon": "^1.9.2",
-    "path": "^0.12.7",
-    "pg": "^5.0.0",
-    "q": "^1.4.1"
-  },
-  "devDependencies": {
-    "nodemon": "^1.9.2",
-    "npm-check-updates": "^2.6.7"
-  }
+    "name": "project",
+    "version": "0.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "start": "nodemon index.js"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "body-parser": "^1.15.1",
+        "bower": "^1.7.9",
+        "consolidate": "^0.14.1",
+        "express": "^4.13.4",
+        "express-router": "0.0.1",
+        "handlebars": "^4.0.5",
+        "path": "^0.12.7",
+        "pg": "^5.0.0",
+        "q": "^1.4.1"
+    },
+    "devDependencies": {
+        "grunt": "^1.0.1",
+        "grunt-cli": "^1.2.0",
+        "grunt-contrib-jshint": "^1.0.0",
+        "grunt-jsbeautifier": "^0.2.12",
+        "nodemon": "^1.9.2",
+        "npm-check-updates": "^2.6.7"
+    }
 }
