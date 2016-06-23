@@ -31,13 +31,13 @@ CREATE DATABASE triangle;
 Then run:
 
 ```
-\l;
+\l
 ```
 and make sure you see the new triange database in your list of databases.
 
 Then connect to this db with this command:
 ```
-\c triangle;
+\c triangle
 ```
 
 In config.js, change the connection string url to the path of your new database and save.

@@ -143,7 +143,7 @@ a {
 #loginErr {
     color: red;
     font-weight: normal;
-    display: none;
+    text-align: center;
 }
 
 hr {
@@ -308,9 +308,9 @@ hr {
 }
 
 @media (max-width: 900px) {
-  #backButton {
-    left: -18%;
-  }
+    #backButton {
+        left: -18%;
+    }
 }
 
 .profileContainer {
@@ -330,8 +330,8 @@ hr {
 }
 
 .profileInfo {
-  letter-spacing: 1px;
-  margin-top: -28px;
+    letter-spacing: 1px;
+    margin-top: -28px;
 }
 
 #backButton {
@@ -341,8 +341,8 @@ hr {
 }
 
 .profileHeader {
-  position: fixed;
-  width: 100%;
-  top: -30px;
-  right: 20%;
+    position: fixed;
+    width: 100%;
+    top: -30px;
+    right: 20%;
 }

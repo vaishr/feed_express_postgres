@@ -8,32 +8,35 @@ var getUserfromUsername = require('./helpers').getUserfromUsername;
 var getFeed = require('./helpers').getFeed;
 var addFeedItem = require('./helpers').addFeedItem;
 
-var currentUser;
-
 router.get('/', function(req, res) {
     res.render('login', {});
 });
 
 router.post('/authenticate', function(req, res) {
-    console.log("/auth", req.body);
+    console.log('/auth', req.body);
     var email = req.body.email;
     var userPromise = verifyUser(email, req.body.password);
     userPromise.then(function(row) {
         getUserfromEmail(email).then(function(row) {
-            currentUser = row.id;
+            req.session.user = row.id;
+            req.session.save();
+            console.log('user session set with', req.session.user);
+            console.log('req.session after user', req.session);
+            res.redirect('/feed');
         });
-        res.redirect('/feed');
     }).catch(function(error) {
-        res.redirect('/');
+        res.render('login', {error: 'Invalid email or password'});
     });
 });
 
 router.get('/feed', function(req, res) {
+    console.log('user req.session.user get feed', req.session.user)
+    console.log('req.session get feed', req.session);
     var feedPromises = getFeed();
     feedPromises.then(function(result) {
         res.render('feed', {
             feed: result.reverse(),
-            user: currentUser
+            user: req.session.user
         });
     });
 });
@@ -44,21 +47,23 @@ router.post('/back', function(req, res) {
 
 router.post('/feed', function(req, res) {
     console.log('req.body.feed_message', req.body.feed_message);
-    console.log('currentUser', currentUser);
-    if (!currentUser) {
-        res.redirect('/feed');
+    console.log('req.session.user', req.session.user); 
+    if (!req.session.user) {
+        console.log('req.session post to feed', req.session);
+        console.log('no req.session.user', req.session.user);
+        res.redirect('/');
     } else {
-        addFeedItem(req.body.feed_message, currentUser).then(function(result) {
+        addFeedItem(req.body.feed_message, req.session.user).then(function(result) {
             console.log("data", result);
+            res.redirect('/feed');
         }).catch(function(err) {
             console.log("err", err);
         });
-        res.redirect('/feed');
     }
 });
 
 router.post('/logout', function(req, res) {
-    currentUser = null;
+    req.session.destroy();
     res.redirect('/');
 });
 

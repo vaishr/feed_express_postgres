@@ -25,10 +25,10 @@
          </div>
        </div>
        {{/each}}
-     </div > 
+     </div> 
      <button class="btnCompose" onclick="openModal()"> </button>
      <div class="modalBackground">
-      <form action="/feed" method="POST">
+      <form action = "/feed" method="POST">
         <textarea class="modalTextArea" type="text" id="newFeedPost" placeholder="What do you want to say?" name="feed_message"></textarea>
         <button id="newPostSubmit" type="submit" onclick="addPost()">Post</button>
       </form>
@@ -61,7 +61,7 @@
       type: "post",
       data: {
         feed_message: newPost,
-        user: currentUser
+        user: user
       }
     });
     request.done(function (response, textStatus, jqXHR){
